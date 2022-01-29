@@ -4,7 +4,8 @@ This is the repository for our Molformer (previously named 3D-Transformer), whic
  problems. *"3D-Transformer: Molecular Representation with Transformer in 3D Space (arXiv 2021)"*   
 [[arXiv](https://arxiv.org/abs/2110.01191)]] [[Code](https://github.com/smiles724/3D-Transformer)]
 
-![cover](model.png)
+<img src="model.png" alt="model" width="400"/>
+
 
 
 ## Intsallation 
@@ -91,7 +92,8 @@ run SchNet `spk_run.py train schnet custom ../../coremof.db ./coremof --split 90
 ## Quick Tour
 ### Model Usage
 After processing the dataset, it is time to establish the model. Suppose there are `N` types of atoms, and `n` 
-downstream multi-tasks. If you only need to predict a single property, set `n = 1`. You can also speficy the number of 
+downstream multi-tasks. If you only need to predict a single property, set `n = 1`. For multi-scale self-attenion, 
+a dist_bar is needed to define the different scales of local regions, such as `dist_bar=[1, 3, 5]`. You can also specify the number of 
 attention heads, the number of encodes, the dimension size, the dropout rate, and etc, There we only adopt the defaults.
 ```python
 >>> import torch 
@@ -109,6 +111,25 @@ attention heads, the number of encodes, the dimension size, the dropout rate, an
 >>> mask = (x != 0).unsqueeze(1)
 >>> out = model(x.long(), mask, pos)
 ```
+
+```python
+>>> import torch 
+>>> from model.tr_msa import build_model
+ 
+# initialize the model 
+>>> model = build_model(N, n, dist_bar).cuda()
+
+# take a 4-atom molecule for example
+>>> x = torch.tensor([[1, 1, 6, 8]])
+>>> pos = torch.tensor([[[7.356203877, 9.058198382, 3.255188164],
+                         [5.990730587, 3.951633382, 9.784664946],
+                         [1.048332315, 3.912215133, 9.827313903],
+                         [2.492201352, 9.097616820, 3.297837121]]])
+>>> mask = (x != 0).unsqueeze(1)
+>>> dist = torch.cdist(pos, pos).float()
+>>> out = model(x.long(), mask, dist)
+```
+
 ### Motif Extraction
 We reply on [RDKit](https://www.rdkit.org/docs/GettingStartedInPython.html) to extract motifs in small molecules. 
 Given the SMILES representation of any molecule, we can manually define the substructures using Smarts. 
