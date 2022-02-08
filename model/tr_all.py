@@ -28,4 +28,5 @@ class FullTransformer3D(nn.Module):
         self.generator = generator
 
     def forward(self, src, src_mask, dist):
-        return self.generator(self.encoder(self.src_embed(src), dist, src_mask)[:, 0])
+        out = self.encoder(self.src_embed(src), dist, src_mask)
+        return self.generator(out)

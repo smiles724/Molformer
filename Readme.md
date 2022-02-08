@@ -103,11 +103,11 @@ attention heads, the number of encodes, the dimension size, the dropout rate, an
 >>> model = build_model(N, n).cuda()
 
 # take a 4-atom molecule for example
->>> x = torch.tensor([[1, 1, 6, 8]])
+>>> x = torch.tensor([[1, 1, 6, 8]]).cuda()
 >>> pos = torch.tensor([[[7.356203877, 9.058198382, 3.255188164],
                          [5.990730587, 3.951633382, 9.784664946],
                          [1.048332315, 3.912215133, 9.827313903],
-                         [2.492201352, 9.097616820, 3.297837121]]])
+                         [2.492201352, 9.097616820, 3.297837121]]]).cuda()
 >>> mask = (x != 0).unsqueeze(1)
 >>> out = model(x.long(), mask, pos)
 ```
@@ -120,11 +120,11 @@ attention heads, the number of encodes, the dimension size, the dropout rate, an
 >>> model = build_model(N, n, dist_bar).cuda()
 
 # take a 4-atom molecule for example
->>> x = torch.tensor([[1, 1, 6, 8]])
+>>> x = torch.tensor([[1, 1, 6, 8]]).cuda()
 >>> pos = torch.tensor([[[7.356203877, 9.058198382, 3.255188164],
                          [5.990730587, 3.951633382, 9.784664946],
                          [1.048332315, 3.912215133, 9.827313903],
-                         [2.492201352, 9.097616820, 3.297837121]]])
+                         [2.492201352, 9.097616820, 3.297837121]]]).cuda()
 >>> mask = (x != 0).unsqueeze(1)
 >>> dist = torch.cdist(pos, pos).float()
 >>> out = model(x.long(), mask, dist)
