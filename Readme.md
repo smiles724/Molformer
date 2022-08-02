@@ -2,7 +2,6 @@
 ## Introduction
 This is the repository for our Molformer.
 
-
 <img src="model.png" alt="model" width="400"/>
 
 ## Intsallation 
@@ -19,58 +18,58 @@ of datasets regarding the material science used in the preceding 3D-Transformer.
 raw datasets in the following links.  
 ### Quantum Chemistry
 - **QM7 Dataset**  
-Download (Official Website): `http://quantum-machine.org/datasets/ `  
-Download (DeepChem): `https://github.com/deepchem/deepchem/blob/master/deepchem/molnet/load_function/qm7_datasets.py#L30-L107`  
-Discription (DeepChem): `https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#qm7-datasets`
+Download (Official Website): <http://quantum-machine.org/datasets/>    
+Download (DeepChem): <https://github.com/deepchem/deepchem/blob/master/deepchem/molnet/load_function/qm7_datasets.py#L30-L107>    
+Discription (DeepChem): <https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#qm7-datasets>  
 
 - **QM8 Dataset**  
-Download (DeepChem): `https://github.com/deepchem/deepchem/blob/master/deepchem/molnet/load_function/qm8_datasets.py`   
-Discription (DeepChem): `https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html?highlight=qm7#qm8-datasets` 
+Download (DeepChem): <https://github.com/deepchem/deepchem/blob/master/deepchem/molnet/load_function/qm8_datasets.py>     
+Discription (DeepChem): <https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html?highlight=qm7#qm8-datasets>   
 
 
 - **QM9 Dataset** 
-Download (Official Website): `https://ndownloader.figshare.com/files/3195389`  
-Download (Deep Chem): `https://github.com/deepchem/deepchem/blob/master/deepchem/molnet/load_function/qm9_datasets.py`   
-Download (Atom3D): `https://www.atom3d.ai/smp.html`     
-Download (MPNN Supplement): `https://drive.google.com/file/d/0Bzn36Iqm8hZscHFJcVh5aC1mZFU/view?resourcekey=0-86oyPL3e3l2ZTiRpwtPDBg`   
-Download (Schnet): `https://schnetpack.readthedocs.io/en/stable/tutorials/tutorial_02_qm9.html#Loading-the-data` 
+Download (Official Website): <https://ndownloader.figshare.com/files/3195389>    
+Download (Deep Chem): <https://github.com/deepchem/deepchem/blob/master/deepchem/molnet/load_function/qm9_datasets.py>    
+Download (Atom3D): <https://www.atom3d.ai/smp.html>       
+Download (MPNN Supplement): <https://drive.google.com/file/d/0Bzn36Iqm8hZscHFJcVh5aC1mZFU/view?resourcekey=0-86oyPL3e3l2ZTiRpwtPDBg>     
+Download (Schnet): <https://schnetpack.readthedocs.io/en/stable/tutorials/tutorial_02_qm9.html#Loading-the-data>  
 
 
 - **GEOM-QM9 Dataset**   
-Download (Official Website): `https://doi.org/10.7910/DVN/JNGTDF`  
-Tutorial of usage: `https://github.com/learningmatter-mit/geom/blob/master/tutorials/01_loading_data.ipynb`                            
+Download (Official Website): <https://doi.org/10.7910/DVN/JNGTDF>     
+Tutorial of usage: <https://github.com/learningmatter-mit/geom/blob/master/tutorials/01_loading_data.ipynb>                              
  
 
 ### Physiology
 - **BBBP**  
-Download and Description (from Moleculnet): `https://moleculenet.org/datasets-1`  
-Download (from Glambard): `https://github.com/GLambard/Molecules_Dataset_Collection`  
-Description (From Deepchem): `https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html`    
-Description (From DGL-sci): `https://lifesci.dgl.ai/api/data.html#tox21`   
+Download and Description (from Moleculnet): <https://moleculenet.org/datasets-1>    
+Download (from Glambard): <https://github.com/GLambard/Molecules_Dataset_Collection>     
+Description (From Deepchem): <https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html>  
+Description (From DGL-sci): <https://lifesci.dgl.ai/api/data.html#tox21>   
  
 - **ClinTox**  
-Download and Description (from Moleculnet): `https://moleculenet.org/datasets-1`  
-Download (from Glambard): `https://github.com/GLambard/Molecules_Dataset_Collection`  
-Description (From Deepchem): `https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html`    
-Description (From DGL-sci): `https://lifesci.dgl.ai/api/data.html#tox21`   
+Download and Description (from Moleculnet): <https://moleculenet.org/datasets-1>   
+Download (from Glambard): <https://github.com/GLambard/Molecules_Dataset_Collection>   
+Description (From Deepchem): <https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html>      
+Description (From DGL-sci): <https://lifesci.dgl.ai/api/data.html#tox21>   
 
 
 ### Biophysics  
 - **PDBbind**    
-Atom3d: `https://github.com/drorlab/atom3d`  <ol> <li> install atom3D `pip install atom3d`</li> <li> download 
-'split-by-sequence-identity-30' dataset from `https://www.atom3d.ai/` </li>  <li> preprocess 
+Atom3d: <https://github.com/drorlab/atom3d>  <ol> <li> install atom3D `pip install atom3d`</li> <li> download 
+'split-by-sequence-identity-30' dataset from <https://www.atom3d.ai/> </li>  <li> preprocess 
 the data by running `python pdbbind/dataloader_pdb.py` </li> </ol>
 
 
 - **BACE**    
-Download and Description (from Moleculnet): `https://moleculenet.org/datasets-1`  
-Download (from Glambard): `https://github.com/GLambard/Molecules_Dataset_Collection`  
-Description (From Deepchem): `https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html`    
-Description (From DGL-sci): `https://lifesci.dgl.ai/api/data.html#tox21`   
+Download and Description (from Moleculnet): <https://moleculenet.org/datasets-1>   
+Download (from Glambard): <https://github.com/GLambard/Molecules_Dataset_Collection>    
+Description (From Deepchem): <https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html>    
+Description (From DGL-sci): <https://lifesci.dgl.ai/api/data.html#tox21>   
 
 ### Material Science  
 - **COREMOF**  
-Download (Baidu Drive):  `https://pan.baidu.com/s/12N8gM8_TQ1mpBGx6gdkAog`  (password：`l41s`)  
+Download (Baidu Drive):  <https://pan.baidu.com/s/12N8gM8_TQ1mpBGx6gdkAog>  (password：`l41s`)  
 Reproduction of PointNet++: `python coremof/reproduce/main_pn_coremof.py`  
 Reproduction of MPNN: `python coremof/reproduce/main_mpnn_coremof.py`  
 Repredoction of SchNet: <ol><li> load COREMOF `python coremof/reproduce/main_sch_coremof.py` </li> <li> 
@@ -139,3 +138,19 @@ Given the SMILES representation of any molecule, we can manually define the subs
 ```
 
 
+<!---
+## Citation
+If you like our paper and find it helpful, please cite!
+```
+@article{wu2021molformer,
+  title={Molformer: Motif-based Transformer on 3D Heterogeneous Molecular Graphs},
+  author={Wu, Fang and Zhang, Qiang and Radev, Dragomir and Cui, Jiyu and Zhang, Wen and Xing, Huabin and Zhang, Ningyu and Chen, Huajun},
+  journal={arXiv preprint arXiv:2110.01191},
+  year={2021}
+}
+```
+
+### Contact 
+If you are interested in our work, please cite.   
+Any question and collaboration is welcome, please contact [Fang Wu](fw2359@columbia.edu)
+-->
