@@ -1,12 +1,7 @@
-# Molformer (ICML 2022 Under Review)
+# Molformer 
 ## Introduction
-This is the repository for our Molformer (previously named 3D-Transformer), which achieves state-of-the-art in many molecular representation learning
- problems. *"3D-Transformer: Molecular Representation with Transformer in 3D Space (arXiv 2021)"*   
-[[arXiv](https://arxiv.org/abs/2110.01191)]] [[Code](https://github.com/smiles724/3D-Transformer)]
-
+This is the repository for our Molformer.
 <img src="model.png" alt="model" width="400"/>
-
-
 
 ## Intsallation 
  ```bash
@@ -142,19 +137,3 @@ Given the SMILES representation of any molecule, we can manually define the subs
 ```
 
 
-<!---
-## Citation
-If you like our paper and find it helpful, please cite!
-```
-@article{wu20213d,
-  title={3D-Transformer: Molecular Representation with Transformer in 3D Space},
-  author={Wu, Fang and Zhang, Qiang and Radev, Dragomir and Cui, Jiyu and Zhang, Wen and Xing, Huabin and Zhang, Ningyu and Chen, Huajun},
-  journal={arXiv preprint arXiv:2110.01191},
-  year={2021}
-}
-```
-
-### Contact 
-If you are interested in our work, please cite.   
-Any question and collaboration is welcome, please contact [Fang Wu](fw2359@columbia.edu)
--->
