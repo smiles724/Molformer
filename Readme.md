@@ -2,7 +2,7 @@
 ## Introduction
 This is the repository for our Molformer.
 
-<p align="center"><img src="model.png" alt="drawing" width="900"/></p>
+<p align="center"><img src="model.png" alt="drawing" width="650"/></p>
 
 ## Intsallation 
  ```bash
