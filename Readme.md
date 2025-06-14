@@ -13,9 +13,9 @@ pip install rdkit-pypi
  
  
 ## Dataset
-We test our model in three different domains: quantum chemistry, physiology and biophysics. We also provide information 
-of datasets regarding the material science used in the preceding 3D-Transformer. You can download the 
-raw datasets in the following links.  
+We test our model in three different domains: quantum chemistry, physiology, and biophysics. We also provide information 
+on datasets regarding the material science used in the preceding 3D-Transformer. You can download the 
+raw datasets from the following links.  
 ### Quantum Chemistry
 - **QM7 Dataset**  
 Download (Official Website): <http://quantum-machine.org/datasets/>    
@@ -88,9 +88,9 @@ run SchNet `spk_run.py train schnet custom ../../coremof.db ./coremof --split 90
 ## Quick Tour
 ### Model Usage
 After processing the dataset, it is time to establish the model. Suppose there are `N` types of atoms, and `n` 
-downstream multi-tasks. If you only need to predict a single property, set `n = 1`. For multi-scale self-attenion, 
+downstream multi-tasks. If you only need to predict a single property, set `n = 1`. For multi-scale self-attention, 
 a dist_bar is needed to define the different scales of local regions, such as `dist_bar=[1, 3, 5]`. You can also specify the number of 
-attention heads, the number of encodes, the dimension size, the dropout rate, and etc, There we only adopt the defaults.
+attention heads, the number of encodes, the dimension size, the dropout rate, etc. There, we only adopt the defaults.
 ```python
 >>> import torch 
 >>> from model.tr_spe import build_model
@@ -98,7 +98,7 @@ attention heads, the number of encodes, the dimension size, the dropout rate, an
 # initialize the model 
 >>> model = build_model(N, n).cuda()
 
-# take a 4-atom molecule for example
+# Take a 4-atom molecule for example
 >>> x = torch.tensor([[1, 1, 6, 8]]).cuda()
 >>> pos = torch.tensor([[[7.356203877, 9.058198382, 3.255188164],
                          [5.990730587, 3.951633382, 9.784664946],
@@ -112,10 +112,10 @@ attention heads, the number of encodes, the dimension size, the dropout rate, an
 >>> import torch 
 >>> from model.tr_msa import build_model
  
-# initialize the model 
+# Initialize the model 
 >>> model = build_model(N, n, dist_bar).cuda()
 
-# take a 4-atom molecule for example
+# Take a 4-atom molecule for example
 >>> x = torch.tensor([[1, 1, 6, 8]]).cuda()
 >>> pos = torch.tensor([[[7.356203877, 9.058198382, 3.255188164],
                          [5.990730587, 3.951633382, 9.784664946],
@@ -127,7 +127,7 @@ attention heads, the number of encodes, the dimension size, the dropout rate, an
 ```
 
 ### Motif Extraction
-We reply on [RDKit](https://www.rdkit.org/docs/GettingStartedInPython.html) to extract motifs in small molecules. 
+We rely on [RDKit](https://www.rdkit.org/docs/GettingStartedInPython.html) to extract motifs in small molecules. 
 Given the SMILES representation of any molecule, we can manually define the substructures using Smarts. 
 ```python
 >>> from rdkit import Chem
@@ -138,19 +138,22 @@ Given the SMILES representation of any molecule, we can manually define the subs
 ```
 
 
-<!---
+
 ## Citation
 If you like our paper and find it helpful, please cite!
 ```
-@article{wu2021molformer,
-  title={Molformer: Motif-based Transformer on 3D Heterogeneous Molecular Graphs},
-  author={Wu, Fang and Zhang, Qiang and Radev, Dragomir and Cui, Jiyu and Zhang, Wen and Xing, Huabin and Zhang, Ningyu and Chen, Huajun},
-  journal={arXiv preprint arXiv:2110.01191},
-  year={2021}
+@inproceedings{wu2023molformer,
+  title={Molformer: Motif-based transformer on 3d heterogeneous molecular graphs},
+  author={Wu, Fang and Radev, Dragomir and Li, Stan Z},
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={37},
+  number={4},
+  pages={5312--5320},
+  year={2023}
 }
 ```
 
 ### Contact 
 If you are interested in our work, please cite.   
-Any question and collaboration is welcome, please contact [Fang Wu](fw2359@columbia.edu)
+Any questions and collaboration are welcome, please contact [Fang Wu](fw2359@columbia.edu)
 -->
