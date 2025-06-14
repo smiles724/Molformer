@@ -155,5 +155,4 @@ If you like our paper and find it helpful, please cite!
 
 ### Contact 
 If you are interested in our work, please cite.   
-Any questions and collaboration are welcome, please contact [Fang Wu](fw2359@columbia.edu)
--->
+Any questions and collaboration are welcome, please contact [Fang Wu](fangwu97@stanford.edu)
