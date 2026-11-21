@@ -6,7 +6,6 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.autograd import Variable
-from mendeleev import element
 import sys
 
 sys.path.append("..")
@@ -198,6 +197,8 @@ class Feat_Embedding(nn.Module):
                                          nn.Linear(embed_dim, embed_dim))
 
     def creat_embed(self, src_vocab):
+        from mendeleev import element
+
         embedding = []
         for atom in range(100):
             if atom in src_vocab:
@@ -244,16 +245,20 @@ class SinusoidalPositionEncoding3D(nn.Module):
         self.embed_dim = embed_dim
 
     def forward(self, x, pos):
-        # 扩大坐标的量级
-        pos = pos * 10
+        pos = pos.detach() * 10
+        div = torch.exp(
+            torch.arange(0., self.embed_dim, 2, device=x.device)
+            * -(math.log(10000.0) / self.embed_dim)
+        )
+        if x.device.type != "mps":
+            div = div.double()
 
-        # sum PE with token embeddings
-        div = torch.exp(torch.arange(0., self.embed_dim, 2) * -(math.log(10000.0) / self.embed_dim)).double().cuda()
-        for i in range(3):
-            pe = torch.zeros(x.shape).cuda()
-            pe[..., 0::2] = torch.sin(pos[..., i].unsqueeze(2) * div)
-            pe[..., 1::2] = torch.cos(pos[..., i].unsqueeze(2) * div)
-            x += Variable(pe, requires_grad=False)
+        for axis in range(3):
+            angles = pos[..., axis, None] * div
+            pe = torch.empty_like(x)
+            pe[..., 0::2] = torch.sin(angles)
+            pe[..., 1::2] = torch.cos(angles[..., :self.embed_dim // 2])
+            x = x + pe
         return self.dropout(x)
 
 

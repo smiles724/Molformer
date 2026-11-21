@@ -47,19 +47,16 @@ class MultiRelationEncoder(nn.Module):
             x, scores = layer(x, dist, mask)
 
         # go through every sample in the batch
-        x_batch, dist_batch, mask_batch = [], [], []
+        x_batch = []
         for i in range(len(dist)):
 
-            # if the molecules have less number of atoms than k, keep them all
-            if torch.sum(mask[i]) <= self.k:
-                x_batch.append(torch.mean(x[i][mask[i, 0]], dim=0))
-
-            else:
+            atom_mask = mask[i, 0]
+            atoms = x[i, atom_mask]
+            if atoms.size(0) > self.k:
                 with torch.no_grad():
-                    idx = AFPS(scores[i], dist[i], self.k, mask[i, 0])
-
-                # dim=1则为global average pooling（generator对应输入维度为k），dim=0就是简单的pooling（generator对应输入维度为embed_dim）
-                x_batch.append(torch.mean(x[i, idx], dim=0))
+                    idx = AFPS(scores[i], dist[i], self.k, atom_mask)
+                atoms = atoms[idx]
+            x_batch.append(atoms.mean(dim=0))
         return self.norm(torch.stack(x_batch, dim=0))
 
 

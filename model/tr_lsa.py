@@ -4,7 +4,7 @@ import math
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from torch.autograd import Variable
+from model.tr_spe import SinusoidalPositionEncoding3D
 
 
 def build_model(vocab, tgt, dist_bar, N=6, embed_dim=512, ffn_dim=2048, head=8, dropout=0.1, out_both=False):
@@ -210,24 +210,8 @@ class FeedForward(nn.Module):
 ## Embedding部分
 #######################################
 
-class PositionalEncoding3D(nn.Module):
-    def __init__(self, embed_dim, dropout):
-        super(PositionalEncoding3D, self).__init__()
-        self.dropout = nn.Dropout(p=dropout)
-        self.embed_dim = embed_dim
-
-    def forward(self, x, pos):
-        # 扩大坐标的量级
-        pos = pos * 10
-
-        # 计算三个位置的PE，并与token embedding直接相加
-        div = torch.exp(torch.arange(0., self.embed_dim, 2) * -(math.log(10000.0) / self.embed_dim)).double().cuda()
-        for i in range(3):
-            pe = torch.zeros(x.shape).cuda()
-            pe[..., 0::2] = torch.sin(pos[..., i].unsqueeze(2) * div)
-            pe[..., 1::2] = torch.cos(pos[..., i].unsqueeze(2) * div)
-            x += Variable(pe, requires_grad=False)
-        return self.dropout(x)
+class PositionalEncoding3D(SinusoidalPositionEncoding3D):
+    pass
 
 
 class Embeddings(nn.Module):
